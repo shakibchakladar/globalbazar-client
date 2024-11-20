@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { CreateUser } = useAuth();
@@ -14,9 +16,26 @@ const Register = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    CreateUser(data.email, data.password);
-    navigate("/");
-    console.log(data);
+    const email = data.email;
+    const role = data.role;
+    const status = role === "buyer" ? "approved" : "pending";
+    const wishlist = [];
+
+    const userData = { email, role, status, wishlist };
+    CreateUser(data.email, data.password).then(() => {
+      axios.post("http://localhost:5000/users", userData).then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Registration successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/");
+        }
+      });
+    });
   };
   return (
     <div className="pt-16 flex justify-center items-center min-h-[calc(100vh-306px)]">
