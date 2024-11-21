@@ -24,6 +24,22 @@ const sellerRoutes = [
   },
 ];
 
+// buyer
+const buyerRoutes = [
+  {
+    id: 1,
+    route: "/dashboard/my-wishlist",
+    icon: <MdHomeWork className="w-5 h-5" />,
+    title: "My wishlist",
+  },
+  {
+    id: 2,
+    route: "/dashboard/my-cart",
+    icon: <MdHomeWork className="w-5 h-5" />,
+    title: "My Cart",
+  },
+];
+
 const Sidebar = () => {
   const userData = useUserData();
   const { Logout } = useAuth();
@@ -93,6 +109,25 @@ const Sidebar = () => {
               </NavLink>
               {userData.role === "seller" &&
                 sellerRoutes.map((route) => {
+                  return (
+                    <NavLink
+                      key={route.id}
+                      to={route.route}
+                      className={({ isActive }) =>
+                        `flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700 ${
+                          isActive
+                            ? "bg-gray-300 text-gray-700"
+                            : "text-gray-600"
+                        }`
+                      }
+                    >
+                      {route.icon}
+                      <span className="mx-4 font-medium">{route.title}</span>
+                    </NavLink>
+                  );
+                })}
+              {userData.role === "buyer" &&
+                buyerRoutes.map((route) => {
                   return (
                     <NavLink
                       key={route.id}
