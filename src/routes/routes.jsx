@@ -17,6 +17,7 @@ import BuyerRoute from "./private/BuyerRoute";
 import AdminRoutes from "./private/AdminRoutes";
 import ManageUsers from "../components/dashboard/ManageUsers";
 import MyCart from "../components/dashboard/buyer/MyCart";
+import About from "../pages/About";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "/details/:id",
         element: <ProductDetails />,
+      },
+      {
+        path: "/about",
+        element: <About/>
       },
       {
         path: "/contact",
