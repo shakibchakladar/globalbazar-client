@@ -14,6 +14,9 @@ import AddProducts from "../pages/seller/AddProducts";
 import ProductDetails from "../pages/ProductDetails";
 import Mywishlist from "../components/dashboard/buyer/Mywishlist";
 import BuyerRoute from "./private/BuyerRoute";
+import AdminRoutes from "./private/AdminRoutes";
+import ManageUsers from "../components/dashboard/ManageUsers";
+import MyCart from "../components/dashboard/buyer/MyCart";
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +69,14 @@ export const router = createBrowserRouter([
           </BuyerRoute>
         ),
       },
+      {
+        path: "/dashboard/my-cart",
+        element: (
+          <BuyerRoute>
+            <MyCart/>
+          </BuyerRoute>
+        ),
+      },
       // seller
       {
         path: "/dashboard/my-products",
@@ -81,6 +92,14 @@ export const router = createBrowserRouter([
           <SellerRoute>
             <AddProducts />
           </SellerRoute>
+        ),
+      },
+      {
+        path: "/dashboard/manage-users",
+        element: (
+          <AdminRoutes>
+            <ManageUsers/>
+          </AdminRoutes>
         ),
       },
     ],

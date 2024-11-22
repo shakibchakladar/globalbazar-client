@@ -7,6 +7,7 @@ import useUserData from "../hooks/useUserData";
 
 const ProductDetails = () => {
   const { id } = useParams();
+  const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState(null);
   const userData = useUserData();
   const userEmail = userData?.email;
@@ -39,6 +40,58 @@ const ProductDetails = () => {
           });
         }
       });
+  };
+
+  // handle add to cart
+
+  const handleAddToCart = async () => {
+    setLoading(true);
+    try {
+      console.log("Sending data to backend:", {
+        productId: product._id,
+        userEmail: userEmail,
+      });
+
+      // console.table(propertyData);
+
+      const response = await fetch("http://localhost:5000/add-cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          
+          email: userEmail,
+          title: product.title,
+          brand: product.brand,
+          price: product.price,
+          image: product.image,
+          description: product.description,
+          category: product.category,
+          stock:product.stock,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add property to wishlist");
+      }
+
+      const data = await response.json();
+      console.log("Backend response:", data);
+
+      if (data.insertedId) {
+        Swal.fire({
+          title: "Success",
+          text: "product added successfully!",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+      }
+    } catch (err) {
+      console.error("Error in wishlist API:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -86,10 +139,13 @@ const ProductDetails = () => {
               {/* <div className="flex items-center gap-4 mt-4 text-lg font-medium text-gray-700"></div> */}
 
               <div className="flex justify-between gap-4 pt-10">
-                <button onClick={handleWishlist} className="btn bg-orange-500 text-white  w-1/2">
+                <button
+                  onClick={handleWishlist}
+                  className="btn bg-orange-500 text-white  w-1/2"
+                >
                   Add to wishlist{" "}
                 </button>
-                <button className="btn bg-orange-500 text-white w-1/2">
+                <button onClick={handleAddToCart} className="btn bg-orange-500 text-white w-1/2">
                   Add to Cart{" "}
                 </button>
               </div>
