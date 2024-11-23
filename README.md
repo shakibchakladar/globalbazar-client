@@ -1,8 +1,15 @@
-# React + Vite
+Global Bazar
+Global Bazar is an e-commerce platform where buyers can explore a wide range of products and sellers can showcase and sell their items. The platform includes an admin interface to manage users, products, and transactions effectively.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Features
+User Roles:
+Buyers: Browse products, add items to the cart, place orders, and track purchases.
+Sellers: List products, manage inventory, and track sales.
+Admins: Manage users, products, and transactions.
+Authentication and Authorization: Secure login system with role-based access control.
+Product Management:
+Buyers can filter products by category, price, or ratings.
+Sellers can upload product images, descriptions, and prices.
+Wishlist: Add and remove items from the wishlist.
+Dynamic Dashboards: Personalized dashboards for buyers, sellers, and admins.
+Responsive Design: Optimized for all devices.
