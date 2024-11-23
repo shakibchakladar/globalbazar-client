@@ -1,13 +1,11 @@
 import axios from "axios";
 import useUserData from "../../../hooks/useUserData";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
 
 
 const WishlistDatarow = ({ wishItem, setLatestData }) => {
   const userData = useUserData();
   const userEmail = userData?.email;
-  const navigate=useNavigate()
   const handleRemoveFromWishlist = async () => {
     await axios
       .patch("http://localhost:5000/wishlist/remove", {
@@ -25,7 +23,6 @@ const WishlistDatarow = ({ wishItem, setLatestData }) => {
           });
           setLatestData((prev) => !prev);
         }
-        navigate("/my-wishlist")
 
       });
       

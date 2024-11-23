@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Loading from "./Loading";
 import Swal from "sweetalert2";
 import useUserData from "../hooks/useUserData";
@@ -11,6 +11,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null);
   const userData = useUserData();
   const userEmail = userData?.email;
+  const navigate=useNavigate();
   //   const [isLoading,setIsLoading]=useState(false)
   useEffect(() => {
     axios.get(`http://localhost:5000/details/${id}`).then((res) => {
@@ -39,6 +40,8 @@ const ProductDetails = () => {
             timer: 1500,
           });
         }
+        navigate("/dashboard/my-wishlist")
+
       });
   };
 
@@ -92,6 +95,7 @@ const ProductDetails = () => {
     } finally {
       setLoading(false);
     }
+    navigate("/dashboard/my-cart")
   };
 
   return (

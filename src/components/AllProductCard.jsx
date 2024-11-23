@@ -5,26 +5,26 @@ import { Link } from "react-router-dom";
 
 const AllProductCard = ({ product }) => {
   const userData = useUserData();
-  const userEmail = userData?.email;
+  // const userEmail = userData?.email;
 
-  const handleWishlist = async () => {
-    await axios
-      .patch("http://localhost:5000/wishlist/add", {
-        userEmail: userEmail,
-        productId: product._id,
-      })
-      .then((res) => {
-        if (res.data.modifiedCount) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Product add to wishlist",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      });
-  };
+  // const handleWishlist = async () => {
+  //   await axios
+  //     .patch("http://localhost:5000/wishlist/add", {
+  //       userEmail: userEmail,
+  //       productId: product._id,
+  //     })
+  //     .then((res) => {
+  //       if (res.data.modifiedCount) {
+  //         Swal.fire({
+  //           position: "top-end",
+  //           icon: "success",
+  //           title: "Product add to wishlist",
+  //           showConfirmButton: false,
+  //           timer: 1500,
+  //         });
+  //       }
+  //     });
+  // };
   return (
     <div className="w-full m-2 transition-transform delay-75 transform shadow-xl featured-card card card-compact bg-base-100 hover:scale-105 max-h-96">
       <figure>
