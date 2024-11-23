@@ -2,13 +2,12 @@ import axios from "axios";
 import useUserData from "../../../hooks/useUserData";
 import Swal from "sweetalert2";
 
-
 const WishlistDatarow = ({ wishItem, setLatestData }) => {
   const userData = useUserData();
   const userEmail = userData?.email;
   const handleRemoveFromWishlist = async () => {
     await axios
-      .patch("https://global-bazar-server.vercel.app/wishlist/remove", {
+      .patch("http://localhost:5000/wishlist/remove", {
         userEmail: userEmail,
         productId: wishItem?._id,
       })
@@ -23,9 +22,7 @@ const WishlistDatarow = ({ wishItem, setLatestData }) => {
           });
           setLatestData((prev) => !prev);
         }
-
       });
-      
   };
   return (
     <tr>
@@ -67,25 +64,7 @@ const WishlistDatarow = ({ wishItem, setLatestData }) => {
           <span className="relative">Remove</span>
         </button>
       </td>
-      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-        <button
-          //   onClick={openUpdateModal}
-          aria-label="Update property"
-          className="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900 cursor-pointer"
-        >
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 bg-green-200 rounded-full opacity-50"
-          ></span>
-          <span className="relative">Add to cart</span>
-        </button>
-        {/* Update Modal */}
-        {/* <UpdateRoomModal
-          isOpen={isUpdateOpen}
-          closeUpdateModal={closeUpdateModal}
-          property={property}
-        /> */}
-      </td>
+      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200"></td>
     </tr>
   );
 };

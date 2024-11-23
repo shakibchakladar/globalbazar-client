@@ -10,7 +10,7 @@ const MyProducts = () => {
   // Fetch user's products
   useEffect(() => {
     if (user?.email) {
-      fetch(`https://global-bazar-server.vercel.app/my-products/${user.email}`)
+      fetch(`http://localhost:5000/my-products/${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setMyProducts(data);
@@ -23,7 +23,7 @@ const MyProducts = () => {
 
   // Handle delete
   const handleDelete = (product) => {
-    fetch(`https://global-bazar-server.vercel.app/delete-products/${product._id}`, {
+    fetch(`http://localhost:5000/delete-products/${product._id}`, {
       method: "DELETE",
     })
       .then((res) => {

@@ -14,7 +14,7 @@ const Mywishlist = () => {
   useEffect(() => {
     const fetchWishlist = async () => {
       await axios
-        .get(`https://global-bazar-server.vercel.app/wishlist/${userData._id}`, {
+        .get(`http://localhost:5000/wishlist/${userData._id}`, {
           headers: {
             authorization: `Bearer ${token}`,
           },

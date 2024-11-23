@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
 
       if (currentUser) {
-        axios.post("https://global-bazar-server.vercel.app/authentication", {
+        axios.post("http://localhost:5000/authentication", {
           email: currentUser.email,
         }).then(data=>{
           if(data.data){

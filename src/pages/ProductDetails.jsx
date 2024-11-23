@@ -14,7 +14,7 @@ const ProductDetails = () => {
   const navigate=useNavigate();
   //   const [isLoading,setIsLoading]=useState(false)
   useEffect(() => {
-    axios.get(`https://global-bazar-server.vercel.app/details/${id}`).then((res) => {
+    axios.get(`http://localhost:5000/details/${id}`).then((res) => {
       setProduct(res.data);
     });
   }, []);
@@ -26,7 +26,7 @@ const ProductDetails = () => {
 
   const handleWishlist = async () => {
     await axios
-      .patch("https://global-bazar-server.vercel.app/wishlist/add", {
+      .patch("http://localhost:5000/wishlist/add", {
         userEmail: userEmail,
         productId: product._id,
       })
@@ -57,7 +57,7 @@ const ProductDetails = () => {
 
       // console.table(propertyData);
 
-      const response = await fetch("https://global-bazar-server.vercel.app/add-cart", {
+      const response = await fetch("http://localhost:5000/add-cart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

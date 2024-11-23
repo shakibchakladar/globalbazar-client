@@ -27,7 +27,7 @@ const Products = () => {
     const fetch = async () => {
       await axios
         .get(
-          `https://global-bazar-server.vercel.app/all-products?title=${search}&page=${page}&limit=${9}&sort=${sort}&brand=${brand}&category=${category}`
+          `http://localhost:5000/all-products?title=${search}&page=${page}&limit=${9}&sort=${sort}&brand=${brand}&category=${category}`
         )
         .then((res) => {
           // setproducts(res.data);
