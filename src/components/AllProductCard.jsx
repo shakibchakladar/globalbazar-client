@@ -5,26 +5,7 @@ import { Link } from "react-router-dom";
 
 const AllProductCard = ({ product }) => {
   const userData = useUserData();
-  // const userEmail = userData?.email;
 
-  // const handleWishlist = async () => {
-  //   await axios
-  //     .patch("http://localhost:5000/wishlist/add", {
-  //       userEmail: userEmail,
-  //       productId: product._id,
-  //     })
-  //     .then((res) => {
-  //       if (res.data.modifiedCount) {
-  //         Swal.fire({
-  //           position: "top-end",
-  //           icon: "success",
-  //           title: "Product add to wishlist",
-  //           showConfirmButton: false,
-  //           timer: 1500,
-  //         });
-  //       }
-  //     });
-  // };
   return (
     <div className="w-full m-2 transition-transform delay-75 transform shadow-xl featured-card card card-compact bg-base-100 hover:scale-105 max-h-96">
       <figure>
@@ -61,7 +42,9 @@ const AllProductCard = ({ product }) => {
           <button className="relative px-6 py-3 bg-gradient-to-r from-orange-400 to-red-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 group">
             <span className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300"></span>
             <span className="relative flex items-center space-x-2">
-              <Link to={`/details/${product._id}`}><span>View Details</span></Link>
+              <Link to={`/details/${product._id}`}>
+                <span>View Details</span>
+              </Link>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"

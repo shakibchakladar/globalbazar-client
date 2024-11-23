@@ -8,7 +8,7 @@ const WishlistDatarow = ({ wishItem, setLatestData }) => {
   const userEmail = userData?.email;
   const handleRemoveFromWishlist = async () => {
     await axios
-      .patch("http://localhost:5000/wishlist/remove", {
+      .patch("https://global-bazar-server.vercel.app/wishlist/remove", {
         userEmail: userEmail,
         productId: wishItem?._id,
       })

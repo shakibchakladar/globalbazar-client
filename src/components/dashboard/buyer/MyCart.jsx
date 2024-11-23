@@ -13,7 +13,7 @@ const MyCart = () => {
         const fetchCart = async () => {
           try {
             const response = await fetch(
-              `http://localhost:5000/my-cart/${user.email}`
+              `https://global-bazar-server.vercel.app/my-cart/${user.email}`
             );
     
             if (!response.ok) {
@@ -36,7 +36,7 @@ const MyCart = () => {
 
       // handle remove
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/cart/${id}`, {
+    fetch(`https://global-bazar-server.vercel.app/cart/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

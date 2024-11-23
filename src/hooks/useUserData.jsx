@@ -9,7 +9,7 @@ const useUserData = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/user/${user.email}`);
+        const res = await axios.get(`https://global-bazar-server.vercel.app/user/${user.email}`);
         setUserData(res.data);
       } catch (err) {
         console.log(err);
